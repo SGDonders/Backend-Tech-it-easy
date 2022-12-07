@@ -1,82 +1,52 @@
-package nl.TechItEasy.Techiteasy.Models;
+package nl.TechItEasy.Techiteasy.dtos;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "televisions")
-public class Television {
-    @Id
-    @GeneratedValue
-    public int id;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
+import nl.TechItEasy.Techiteasy.models.RemoteController;
+
+public class TelevisionOutputDto {
+    // OutputDto variabelen
     public String name;
     public String brand;
+
     public int price;
+
+    public String type;
+
     public int availableSize;
+
     public double refreshRate;
+
     public double screenType;
+
     public double screenQuality;
+
     public boolean smartTv;
+
     public boolean wifi;
+
     public boolean speech;
+
     public boolean HDR;
+
     public boolean bluetooth;
+
     public boolean ambiLight;
+
     public int originalStock;
+
     public int sold;
 
-    public Television() {
-    }
+    public boolean voiceControl;
 
-    public Television(int id, String name, String brand, int price, int availableSize, double refreshRate,
-                      double screenType, double screenQuality, boolean smartTv, boolean wifi, boolean speech, boolean HDR,
-                      boolean bluetooth, boolean ambiLight, int originalStock, int sold) {
-        this.id = id;
-        this.name = name;
-        this.brand = brand;
-        this.price = price;
-        this.availableSize = availableSize;
-        this.refreshRate = refreshRate;
-        this.screenType = screenType;
-        this.screenQuality = screenQuality;
-        this.smartTv = smartTv;
-        this.wifi = wifi;
-        this.speech = speech;
-        this.HDR = HDR;
-        this.bluetooth = bluetooth;
-        this.ambiLight = ambiLight;
-        this.originalStock = originalStock;
-        this.sold = sold;
-    }
+    @JsonIncludeProperties("id")
+    private RemoteController remoteController;
 
-    @Override
-    public String toString() {
-        return "Television{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", brand='" + brand + '\'' +
-                ", price=" + price +
-                ", availableSize=" + availableSize +
-                ", refreshRate=" + refreshRate +
-                ", screentype=" + screenType +
-                ", screenQuality=" + screenQuality +
-                ", smartTv=" + smartTv +
-                ", wifi=" + wifi +
-                ", speech=" + speech +
-                ", HDR=" + HDR +
-                ", bleutooth=" + bluetooth +
-                ", ambiLight=" + ambiLight +
-                ", originalStock=" + originalStock +
-                ", sold=" + sold +
-                '}';
-    }
 
-    public int getId() {
-        return id;
-    }
 
+
+
+    // Getters.
     public String getName() {
         return name;
     }
@@ -87,6 +57,10 @@ public class Television {
 
     public int getPrice() {
         return price;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public int getAvailableSize() {
@@ -137,10 +111,12 @@ public class Television {
         return sold;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public boolean isVoiceControl() {
+        return voiceControl;
     }
 
+
+    // Setters.
     public void setName(String name) {
         this.name = name;
     }
@@ -153,6 +129,10 @@ public class Television {
         this.price = price;
     }
 
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public void setAvailableSize(int availableSize) {
         this.availableSize = availableSize;
     }
@@ -161,8 +141,8 @@ public class Television {
         this.refreshRate = refreshRate;
     }
 
-    public void setScreenType(double screentype) {
-        this.screenType = screentype;
+    public void setScreenType(double screenType) {
+        this.screenType = screenType;
     }
 
     public void setScreenQuality(double screenQuality) {
@@ -185,8 +165,8 @@ public class Television {
         this.HDR = HDR;
     }
 
-    public void setBluetooth(boolean bleutooth) {
-        this.bluetooth = bleutooth;
+    public void setBluetooth(boolean bluetooth) {
+        this.bluetooth = bluetooth;
     }
 
     public void setAmbiLight(boolean ambiLight) {
@@ -201,5 +181,7 @@ public class Television {
         this.sold = sold;
     }
 
+    public void setVoiceControl(boolean voiceControl) {
+        this.voiceControl = voiceControl;
+    }
 }
-

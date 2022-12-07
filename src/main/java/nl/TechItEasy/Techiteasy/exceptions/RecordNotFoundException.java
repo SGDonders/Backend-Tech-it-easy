@@ -1,4 +1,4 @@
-package nl.TechItEasy.Techiteasy.Exceptions;
+package nl.TechItEasy.Techiteasy.exceptions;
 
 public class RecordNotFoundException extends RuntimeException {
     public RecordNotFoundException() {

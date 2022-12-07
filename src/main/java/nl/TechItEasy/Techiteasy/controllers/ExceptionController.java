@@ -1,5 +1,5 @@
-package nl.TechItEasy.Techiteasy.Controllers;
-import nl.TechItEasy.Techiteasy.Exceptions.RecordNotFoundException;
+package nl.TechItEasy.Techiteasy.controllers;
+import nl.TechItEasy.Techiteasy.exceptions.RecordNotFoundException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
