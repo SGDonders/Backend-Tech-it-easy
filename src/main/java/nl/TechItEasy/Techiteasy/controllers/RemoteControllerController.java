@@ -15,7 +15,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/remotecontollers")
 public class RemoteControllerController {
 
     private final RemoteControllerService remoteControllerService;
@@ -51,7 +51,7 @@ public class RemoteControllerController {
 
         RemoteController savedRemoteControllerController = remoteControllerService.createRemoteController(remoteControllerInputDto);
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath
-                ().path("/RemoteControllerController/" + savedRemoteControllerController.getId()).toUriString());
+                ().path("/RemoteController/" + savedRemoteControllerController.getId()).toUriString());
 
         return ResponseEntity.created(uri).body(savedRemoteControllerController);
     }

@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "CiModules")
+@Table(name = "cimodules")
 public class CiModule {
     // Instance variabelen.
     @Id

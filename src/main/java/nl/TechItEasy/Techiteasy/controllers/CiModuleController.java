@@ -15,7 +15,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/cimodules")
 public class CiModuleController {
 
     private final CiModuleService ciModuleService;
@@ -37,7 +37,7 @@ public class CiModuleController {
     }
 
     // DeleteMapping request voor een CiModule.
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<String> deleteCiModule(@PathVariable int id) {
         ciModuleService.deleteCiModule(id); //
         return ResponseEntity.noContent().build();

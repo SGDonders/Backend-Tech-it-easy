@@ -17,13 +17,13 @@ public class RemoteController {
     @GeneratedValue
     public Integer id;
 
-//    @OneToOne(mappedBy = "remoteController")
-//    @JoinColumn(name = "televisions_id")
-//    private Television television;
-    public String compatibleWith;
-    public String batteryType;
+    @OneToOne(mappedBy = "remoteController")
+    private Television television;
+
+    public String compatible_with;
+    public String battery_type;
     public String name;
     public String brand;
     public Double price;
-    public Integer originalStock;
+    public Integer original_stock;
 }

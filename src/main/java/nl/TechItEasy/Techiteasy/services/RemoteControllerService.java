@@ -27,12 +27,12 @@ public class RemoteControllerService {
 
         RemoteController newRemoteController = new RemoteController();
 
-        newRemoteController.setCompatibleWith(remoteControllerInputDto.compatibleWith);
-        newRemoteController.setBatteryType(remoteControllerInputDto.batteryType);
+        newRemoteController.setCompatible_with(remoteControllerInputDto.compatible_with);
+        newRemoteController.setBattery_type(remoteControllerInputDto.battery_type);
         newRemoteController.setName(remoteControllerInputDto.name);
         newRemoteController.setPrice(remoteControllerInputDto.price);
         newRemoteController.setBrand(remoteControllerInputDto.brand);
-        newRemoteController.setOriginalStock(remoteControllerInputDto.originalStock);
+        newRemoteController.setOriginal_stock(remoteControllerInputDto.original_stock);
 
         return remoteControllerRepository.save(newRemoteController);
     }
@@ -41,12 +41,12 @@ public class RemoteControllerService {
 
         RemoteControllerOutputDto remoteControllerOutputDto = new RemoteControllerOutputDto();
 
-        remoteControllerOutputDto.setCompatibleWith(remoteController.getCompatibleWith());
-        remoteControllerOutputDto.setBatteryType(remoteController.getBatteryType());
+        remoteControllerOutputDto.setCompatibleWith(remoteController.getCompatible_with());
+        remoteControllerOutputDto.setBatteryType(remoteController.getBattery_type());
         remoteControllerOutputDto.setName(remoteController.getName());
         remoteControllerOutputDto.setPrice(remoteController.getPrice());
         remoteControllerOutputDto.setBrand(remoteController.getBrand());
-        remoteControllerOutputDto.setOriginalStock(remoteController.getOriginalStock());
+        remoteControllerOutputDto.setOriginalStock(remoteController.getOriginal_stock());
 
         return remoteControllerOutputDto;
     }

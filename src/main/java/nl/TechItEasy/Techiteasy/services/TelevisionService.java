@@ -28,22 +28,22 @@ public class TelevisionService {
         // Nieuwe televisie aanmaken
         Television newTelevision = new Television();
         // Nieuwe televisie de variabelen meegeven van de inputDto.
-        newTelevision.setType(televisionInputDto.type);
-        newTelevision.setName(televisionInputDto.name);
-        newTelevision.setBrand(televisionInputDto.brand);
-        newTelevision.setPrice(televisionInputDto.price);
-        newTelevision.setAvailableSize(televisionInputDto.availableSize);
-        newTelevision.setRefreshRate(televisionInputDto.refreshRate);
-        newTelevision.setScreenType(televisionInputDto.screenType);
-        newTelevision.setScreenQuality(televisionInputDto.screenQuality);
-        newTelevision.setSmartTv(televisionInputDto.smartTv);
-        newTelevision.setWifi(televisionInputDto.wifi);
-        newTelevision.setSpeech(televisionInputDto.speech);
-        newTelevision.setHDR(televisionInputDto.HDR);
-        newTelevision.setBluetooth(televisionInputDto.bluetooth);
-        newTelevision.setAmbiLight(televisionInputDto.ambiLight);
-        newTelevision.setOriginalStock(televisionInputDto.originalStock);
-        newTelevision.setSold(televisionInputDto.sold);
+        newTelevision.setType(televisionInputDto.getType());
+        newTelevision.setName(televisionInputDto.getName());
+        newTelevision.setBrand(televisionInputDto.getBrand());
+        newTelevision.setPrice(televisionInputDto.getPrice());
+        newTelevision.setAvailable_size(televisionInputDto.getAvailable_size());
+        newTelevision.setRefresh_rate(televisionInputDto.getRefresh_rate());
+        newTelevision.setScreen_type(televisionInputDto.getScreen_type());
+        newTelevision.setScreen_quality(televisionInputDto.getScreen_quality());
+        newTelevision.setSmart_tv(televisionInputDto.isSmart_tv());
+        newTelevision.setWifi(televisionInputDto.isWifi());
+        newTelevision.setHdr(televisionInputDto.isHdr());
+        newTelevision.setBluetooth(televisionInputDto.isBluetooth());
+        newTelevision.setAmbi_light(televisionInputDto.isAmbi_light());
+        newTelevision.setOriginal_stock(televisionInputDto.getOriginal_stock());
+        newTelevision.setSold(televisionInputDto.getSold());
+        newTelevision.setRemoteController(televisionInputDto.getRemoteController());
         // nieuwe televisie opslaan in database.
         return televisionRepository.save(newTelevision);
     }
@@ -57,18 +57,19 @@ public class TelevisionService {
         televisionOutputDto.setBrand(television.getBrand());
         televisionOutputDto.setName(television.getName());
         televisionOutputDto.setPrice(television.getPrice());
-        televisionOutputDto.setAvailableSize(television.getAvailableSize());
-        televisionOutputDto.setRefreshRate(television.getRefreshRate());
-        televisionOutputDto.setScreenType(television.getScreenType());
-        televisionOutputDto.setScreenQuality(television.getScreenQuality());
-        televisionOutputDto.setSmartTv(television.isWifi());
+        televisionOutputDto.setAvailable_size(television.getAvailable_size());
+        televisionOutputDto.setRefresh_rate(television.getRefresh_rate());
+        televisionOutputDto.setScreen_type(television.getScreen_type());
+        televisionOutputDto.setScreen_quality(television.getScreen_quality());
+        televisionOutputDto.setSmart_tv(television.isWifi());
         televisionOutputDto.setWifi(television.isWifi());
-        televisionOutputDto.setVoiceControl(television.isVoiceControl());
-        televisionOutputDto.setHDR(television.isHDR());
+        televisionOutputDto.setVoice_control(television.isVoice_control());
+        televisionOutputDto.setHdr(television.isHdr());
         televisionOutputDto.setBluetooth(television.isBluetooth());
-        televisionOutputDto.setAmbiLight(television.isAmbiLight());
-        televisionOutputDto.setOriginalStock(television.getOriginalStock());
+        televisionOutputDto.setAmbi_light(television.isAmbi_light());
+        televisionOutputDto.setOriginal_stock(television.getOriginal_stock());
         televisionOutputDto.setSold(television.getSold());
+        televisionOutputDto.setRemoteController(television.getRemoteController());
         // Nieuw aangemaakte televisionOutputDto terug geven.
         return televisionOutputDto;
     }
@@ -140,51 +141,41 @@ public class TelevisionService {
 
             // If-(conditie) checked of de waarde niet null is.
             // Update de televisie met de waardes van de ontvangen inputDto.
-            if(televisionInputDto.type != null) {
+            if(televisionInputDto.getType() != null) {
                 televisionUpdate.setType(televisionInputDto.getType());
             }
-            if(televisionInputDto.brand != null) {
+            if(televisionInputDto.getBrand() != null) {
                 televisionUpdate.setBrand(televisionInputDto.getBrand());
             }
-            if(televisionInputDto.name != null) {
+            if(televisionInputDto.getName() != null) {
                 televisionUpdate.setName(televisionInputDto.getName());
             }
-            if(televisionInputDto.price != 0) {
+            if(televisionInputDto.getPrice() != 0) {
                 televisionUpdate.setPrice(televisionInputDto.getPrice());
             }
-            if(televisionInputDto.availableSize != 0) {
-                televisionUpdate.setAvailableSize(televisionInputDto.getAvailableSize());
+            if(televisionInputDto.getAvailable_size() != 0) {
+                televisionUpdate.setAvailable_size(televisionInputDto.getAvailable_size());
             }
-            if(televisionInputDto.refreshRate != 0) {
-                televisionUpdate.setRefreshRate(televisionInputDto.getRefreshRate());
+            if(televisionInputDto.getRefresh_rate() != 0) {
+                televisionUpdate.setRefresh_rate(televisionInputDto.getRefresh_rate());
             }
-            if(televisionInputDto.screenType != 0) {
-                televisionUpdate.setScreenType(televisionInputDto.getScreenType());
+            if(televisionInputDto.getScreen_type() != null) {
+                televisionUpdate.setScreen_type(televisionInputDto.getScreen_type());
             }
-            if(televisionInputDto.screenQuality != 0) {
-                televisionUpdate.setScreenQuality(televisionInputDto.getScreenQuality());
+            if(televisionInputDto.getScreen_quality() != null) {
+                televisionUpdate.setScreen_quality(televisionInputDto.getScreen_quality());
             }
-            if(televisionInputDto.smartTv != null ) {
-                televisionUpdate.setSmartTv(televisionInputDto.isSmartTv());
+
+            if(televisionInputDto.getOriginal_stock() != 0) {
+                televisionUpdate.setOriginal_stock(televisionInputDto.getOriginal_stock());
             }
-            if(televisionInputDto.wifi != null) {
-                televisionUpdate.setWifi(televisionInputDto.isWifi());
-            }
-            if(televisionInputDto.speech != null) {
-                televisionUpdate.setSpeech(televisionInputDto.isSpeech());
-            }
-            if(televisionInputDto.bluetooth != null) {
-                televisionUpdate.setBluetooth(televisionInputDto.isBluetooth());
-            }
-            if(televisionInputDto.ambiLight != null) {
-                televisionUpdate.setAmbiLight(televisionInputDto.isAmbiLight());
-            }
-            if(televisionInputDto.originalStock != null) {
-                televisionUpdate.setOriginalStock(televisionInputDto.getOriginalStock());
-            }
-            if(televisionInputDto.sold != null) {
+            if(televisionInputDto.getSold() != 0) {
                 televisionUpdate.setSold(televisionInputDto.getSold());
             }
+            televisionUpdate.setSmart_tv(televisionInputDto.isSmart_tv());
+            televisionUpdate.setWifi(televisionInputDto.isWifi());
+            televisionUpdate.setBluetooth(televisionInputDto.isBluetooth());
+            televisionUpdate.setAmbi_light(televisionInputDto.isAmbi_light());
             // Slaat de geüpdatete televisie op in de database
             Television updatedTelevision = televisionRepository.save(televisionUpdate);
             return transferTelevisionToOutputDto(updatedTelevision);  // Returned de geüpdatete televisie
@@ -206,6 +197,8 @@ public class TelevisionService {
         } else {
             throw new RecordNotFoundException("No television/remote-controller combination found");
         }
+
+
     }
 }
 

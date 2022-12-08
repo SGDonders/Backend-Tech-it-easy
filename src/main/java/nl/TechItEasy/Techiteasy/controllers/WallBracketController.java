@@ -15,7 +15,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/wallbrackets")
 public class WallBracketController {
 
     private final WallBracketService wallBracketService;

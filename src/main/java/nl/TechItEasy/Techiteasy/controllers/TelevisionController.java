@@ -64,7 +64,7 @@ public class TelevisionController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/{tvId}/remoteControllers/{remoteId}")
+    @PutMapping("/{tvId}/remotecontrollers/{remoteId}")
     public ResponseEntity<Object> assignRemoteControllerToTelevision(
             @PathVariable Integer tvId, @PathVariable Integer remoteId) {
         televisionService.assignRemoteControllerToTelevision(tvId, remoteId);
