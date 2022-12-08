@@ -23,6 +23,7 @@ public class TelevisionService {
         this.remoteControllerRepository = remoteControllerRepository;
     }
 
+
     // Wrapper functie om dto naar televisie te mappen (wordt gebruikt door de client zijde via controller).
     public Television transferInputDtoToTelevision(TelevisionInputDto televisionInputDto) {
         // Nieuwe televisie aanmaken
@@ -47,6 +48,7 @@ public class TelevisionService {
         // nieuwe televisie opslaan in database.
         return televisionRepository.save(newTelevision);
     }
+
 
     // Wrapper functie om televisie naar dto te mappen (wordt gebruikt door de database zijde).
     public TelevisionOutputDto transferTelevisionToOutputDto(Television television) {
@@ -85,6 +87,7 @@ public class TelevisionService {
         }
     }
 
+
     // Functie voor GetMapping van alle tv's.
     public List<TelevisionOutputDto> getAllTelevision() {
         List<Television> optionalTelevisions = televisionRepository.findAll(); // Alle tv objecten opslaan in een lijst
@@ -94,10 +97,10 @@ public class TelevisionService {
         if (optionalTelevisions.isEmpty()) { // Checken of lijst leeg is.
             throw new RecordNotFoundException("Record not found!"); // Als lijst leeg is throw exception.
         } else {
-            for (Television tv : optionalTelevisions) { // uit de lijst van optional tv's één voor één de tv's halen.
-                TelevisionOutputDto televisionOutputDto = transferTelevisionToOutputDto(tv); // Mapping functie om tv's
-                                                                                             // uit optional tv's
-                                                                                             // om te zetten naar outputDto.
+            for (Television television : optionalTelevisions) { // uit de lijst van optional tv's één voor één de tv's halen.
+                TelevisionOutputDto televisionOutputDto = transferTelevisionToOutputDto(television); // Mapping functie om tv's
+                                                                                                     // uit optional tv's
+                                                                                                     // om te zetten naar outputDto.
                 tvOutputDtoList.add(televisionOutputDto); // OutputDto's
                                                           // toevoegen aan nieuwe arraylist
                                                           // met de naam tvOutputDtoList.
@@ -105,6 +108,7 @@ public class TelevisionService {
         }// Returned nieuwe arraylist met outputDto's terug geven
         return tvOutputDtoList;
     }
+
 
     // Functie voor deleteMapping televisie.
     public void deleteTelevision(int id) {
@@ -120,6 +124,7 @@ public class TelevisionService {
         }
     }
 
+
     // Functie voor PostMapping televisie
     public Television createTelevision(TelevisionInputDto televisionInputDto) { // Functie ontvangt een inputDto
         Television newTelevision = transferInputDtoToTelevision(televisionInputDto); // Gebruik mapping functie om
@@ -129,6 +134,7 @@ public class TelevisionService {
         // Return slaat nieuw tv object in de database.
         return televisionRepository.save(newTelevision);
     }
+
 
     // Functie voor PutMapping televisie
     public TelevisionOutputDto updateTelevision(int id, TelevisionInputDto televisionInputDto) { // Functie ontvangt een
@@ -185,20 +191,24 @@ public class TelevisionService {
         }
     }
 
-    public void assignRemoteControllerToTelevision(Integer tvId, Integer remoteId) {
 
-        Optional<Television> optionalTelevision = televisionRepository.findById(tvId);
-        Optional<RemoteController> optionalRemoteControl = remoteControllerRepository.findById(remoteId);
-        if (optionalTelevision.isPresent() && optionalRemoteControl.isPresent()) {
-            Television television = optionalTelevision.get();
-            RemoteController remoteControl = optionalRemoteControl.get();
-            television.setRemoteController(remoteControl);
-            televisionRepository.save(television);
+    // Functie om de remote-controller te linken met een televisie
+    public void assignRemoteControllerToTelevision(Integer tvId, Integer remoteId) { // Functie ontvangt tvId en remoteId
+                                                                                     // via client zijde.
+
+        Optional<Television> optionalTelevision = televisionRepository.findById(tvId); // Haalt optional tv uit database
+        Optional<RemoteController> optionalRemoteControl = remoteControllerRepository.findById(remoteId); // Haal optional
+                                                                                                          // remote uit database.
+        if (optionalTelevision.isPresent() && optionalRemoteControl.isPresent()) { // Checkt of beide aanwezig zijn.
+            Television television = optionalTelevision.get(); // Indien aanwezig pakt de optional tv en maakt er een tv van.
+            RemoteController remoteControl = optionalRemoteControl.get(); // Indien aanwezig pakt de optional remote en maakt
+                                                                          // er een remote-controller van .
+            television.setRemoteController(remoteControl); // Voegt de remote-controller toe aan de televisie.
+            televisionRepository.save(television); // Slaat de televisie op in de database.
         } else {
             throw new RecordNotFoundException("No television/remote-controller combination found");
+            // Indien niet aanwezig gooit een exception.
         }
-
-
     }
 }
 

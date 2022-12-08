@@ -1,24 +1,25 @@
 package nl.TechItEasy.Techiteasy.models;
 
 import lombok.*;
-import org.hibernate.Hibernate;
 import javax.persistence.*;
-import java.util.Objects;
 
+// Lombok annotaties.
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder
 
 @Entity
-@Table(name = "televisions")
+@Table(name = "televisions") // Table naam voor in de database.
 
 public class Television {
-    // Instance variabelen.
+    // Instance variabelen instantie.
     @Id
-    @GeneratedValue
+    @GeneratedValue// Geeft de entiteit automatisch een id.
     private int id;
+
     private String type;
     private String brand;
     private String name;
@@ -36,7 +37,8 @@ public class Television {
     private int original_stock;
     private int sold;
 
-
+    // One to One relatie met remoteController
+    // waarbij de televisie de eigenaar is.
     @OneToOne
     private RemoteController remoteController;
 

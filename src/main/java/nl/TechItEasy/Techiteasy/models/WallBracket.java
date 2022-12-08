@@ -1,12 +1,12 @@
 package nl.TechItEasy.Techiteasy.models;
 
 import lombok.*;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@ToString
 @Getter
 @Setter
 @Builder

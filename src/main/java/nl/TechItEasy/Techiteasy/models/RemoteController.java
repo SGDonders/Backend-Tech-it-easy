@@ -1,8 +1,8 @@
 package nl.TechItEasy.Techiteasy.models;
 
 import lombok.*;
-
 import javax.persistence.*;
+
 @ToString
 @Getter
 @Setter

@@ -23,18 +23,26 @@ public class TelevisionController {
         this.televisionService = televisionService;
     }
 
-    // GetMapping request alle televisie's.
-    @GetMapping("")
-    public ResponseEntity<List<TelevisionOutputDto>> getAllTelevisions() { // Slaat alle tv's op in lijst met outputDto's.
-        return ResponseEntity.ok(televisionService.getAllTelevision()); // Krijgt lijst me alle outputDto's
-    }
-
     // GetMapping request voor één televisie.
     @GetMapping("{id}")
     public ResponseEntity<TelevisionOutputDto> getTelevision(@PathVariable int id) {
         return ResponseEntity.ok(televisionService.getTelevision(id));
     }
 
+
+    // GetMapping request alle televisie's.
+    @GetMapping("")
+    public ResponseEntity<List<TelevisionOutputDto>> getAllTelevisions() { // Slaat alle tv's op in lijst met outputDto's.
+        return ResponseEntity.ok(televisionService.getAllTelevision()); // Krijgt lijst me alle outputDto's
+    }
+
+
+    // DeleteMapping request van een televisie.
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteTelevision(@PathVariable int id) { // Verwacht een Id van clientzijde.
+        televisionService.deleteTelevision(id); // Delete television uit database.
+        return ResponseEntity.noContent().build();
+    }
 
     // PostMapping request van een televisie.
     @PostMapping("")                            // @Valid Annotation indien condities ingesteld bij Dto's
@@ -49,6 +57,7 @@ public class TelevisionController {
         return ResponseEntity.created(uri).body(savedTelevision);
     }
 
+
     // PutMapping request van een televisie.
     @PutMapping("/{id}")                        // Verwacht een id en een inputDTO
     public ResponseEntity<Object> updateTelevision(@PathVariable int id, @RequestBody TelevisionInputDto televisionInputDto){
@@ -57,17 +66,12 @@ public class TelevisionController {
         // Returned een outputDto                                                    // outputDto.
     }
 
-    // DeleteMapping request.
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteTelevision(@PathVariable int id) {
-        televisionService.deleteTelevision(id); //
-        return ResponseEntity.noContent().build();
-    }
 
+    // PutMapping voor een televisie en link met remote-controller.
     @PutMapping("/{tvId}/remotecontrollers/{remoteId}")
-    public ResponseEntity<Object> assignRemoteControllerToTelevision(
-            @PathVariable Integer tvId, @PathVariable Integer remoteId) {
-        televisionService.assignRemoteControllerToTelevision(tvId, remoteId);
+    public ResponseEntity<Object> assignRemoteControllerToTelevision(@PathVariable Integer tvId, // Verwacht een tvId.
+                                                                     @PathVariable Integer remoteId) { // Verwacht een RemoteId.
+        televisionService.assignRemoteControllerToTelevision(tvId, remoteId); // Gebruikt de assign functie to Television
         return ResponseEntity.ok().body("RemoteController linked to television!");
     }
 

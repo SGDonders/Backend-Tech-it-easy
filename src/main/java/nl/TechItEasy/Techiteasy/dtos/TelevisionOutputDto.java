@@ -25,8 +25,7 @@ public class TelevisionOutputDto {
     private boolean ambi_light;
     private int original_stock;
     private int sold;
+
     @JsonIncludeProperties("id")
     private RemoteController remoteController;
-
-
 }
