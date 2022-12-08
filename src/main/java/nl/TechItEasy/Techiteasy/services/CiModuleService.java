@@ -1,14 +1,10 @@
 package nl.TechItEasy.Techiteasy.services;
 
 
-import nl.TechItEasy.Techiteasy.dtos.CiModuleInputDto;
-import nl.TechItEasy.Techiteasy.dtos.CiModuleOutputDto;
-
-import nl.TechItEasy.Techiteasy.dtos.RemoteControllerInputDto;
-import nl.TechItEasy.Techiteasy.dtos.RemoteControllerOutputDto;
+import nl.TechItEasy.Techiteasy.dtos.inputDtos.CiModuleInputDto;
+import nl.TechItEasy.Techiteasy.dtos.outputDtos.CiModuleOutputDto;
 import nl.TechItEasy.Techiteasy.exceptions.RecordNotFoundException;
 import nl.TechItEasy.Techiteasy.models.CiModule;
-import nl.TechItEasy.Techiteasy.models.RemoteController;
 import nl.TechItEasy.Techiteasy.repositories.CiModuleRepository;
 import org.springframework.stereotype.Service;
 

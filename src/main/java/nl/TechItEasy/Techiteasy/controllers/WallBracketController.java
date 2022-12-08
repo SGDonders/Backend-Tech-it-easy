@@ -1,10 +1,8 @@
 package nl.TechItEasy.Techiteasy.controllers;
 
 import nl.TechItEasy.Techiteasy.Utils;
-import nl.TechItEasy.Techiteasy.dtos.RemoteControllerInputDto;
-import nl.TechItEasy.Techiteasy.dtos.RemoteControllerOutputDto;
-import nl.TechItEasy.Techiteasy.dtos.WallBracketInputDto;
-import nl.TechItEasy.Techiteasy.dtos.WallBracketOutputDto;
+import nl.TechItEasy.Techiteasy.dtos.inputDtos.WallBracketInputDto;
+import nl.TechItEasy.Techiteasy.dtos.outputDtos.WallBracketOutputDto;
 import nl.TechItEasy.Techiteasy.models.WallBracket;
 import nl.TechItEasy.Techiteasy.services.WallBracketService;
 import org.springframework.http.ResponseEntity;

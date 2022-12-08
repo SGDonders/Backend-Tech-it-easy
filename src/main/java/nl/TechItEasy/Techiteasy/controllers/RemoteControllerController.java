@@ -1,8 +1,8 @@
 package nl.TechItEasy.Techiteasy.controllers;
 
 import nl.TechItEasy.Techiteasy.Utils;
-import nl.TechItEasy.Techiteasy.dtos.RemoteControllerInputDto;
-import nl.TechItEasy.Techiteasy.dtos.RemoteControllerOutputDto;
+import nl.TechItEasy.Techiteasy.dtos.inputDtos.RemoteControllerInputDto;
+import nl.TechItEasy.Techiteasy.dtos.outputDtos.RemoteControllerOutputDto;
 import nl.TechItEasy.Techiteasy.models.RemoteController;
 import nl.TechItEasy.Techiteasy.services.RemoteControllerService;
 import org.springframework.http.ResponseEntity;

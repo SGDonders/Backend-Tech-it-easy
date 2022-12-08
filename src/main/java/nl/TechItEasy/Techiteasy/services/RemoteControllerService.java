@@ -1,13 +1,11 @@
 package nl.TechItEasy.Techiteasy.services;
 
-import nl.TechItEasy.Techiteasy.dtos.RemoteControllerInputDto;
-import nl.TechItEasy.Techiteasy.dtos.RemoteControllerOutputDto;
-
+import nl.TechItEasy.Techiteasy.dtos.inputDtos.RemoteControllerInputDto;
+import nl.TechItEasy.Techiteasy.dtos.outputDtos.RemoteControllerOutputDto;
 import nl.TechItEasy.Techiteasy.exceptions.RecordNotFoundException;
 import nl.TechItEasy.Techiteasy.models.RemoteController;
 import nl.TechItEasy.Techiteasy.repositories.RemoteControllerRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

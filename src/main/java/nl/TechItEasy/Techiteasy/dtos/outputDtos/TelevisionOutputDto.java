@@ -1,4 +1,4 @@
-package nl.TechItEasy.Techiteasy.dtos;
+package nl.TechItEasy.Techiteasy.dtos.outputDtos;
 
 
 import com.fasterxml.jackson.annotation.JsonIncludeProperties;

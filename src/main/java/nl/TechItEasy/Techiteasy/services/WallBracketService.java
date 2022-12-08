@@ -1,13 +1,12 @@
 package nl.TechItEasy.Techiteasy.services;
 
 
-import nl.TechItEasy.Techiteasy.dtos.WallBracketInputDto;
-import nl.TechItEasy.Techiteasy.dtos.WallBracketOutputDto;
+import nl.TechItEasy.Techiteasy.dtos.inputDtos.WallBracketInputDto;
+import nl.TechItEasy.Techiteasy.dtos.outputDtos.WallBracketOutputDto;
 import nl.TechItEasy.Techiteasy.exceptions.RecordNotFoundException;
 import nl.TechItEasy.Techiteasy.models.WallBracket;
 import nl.TechItEasy.Techiteasy.repositories.WallBracketRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

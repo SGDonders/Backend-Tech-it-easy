@@ -1,4 +1,4 @@
-package nl.TechItEasy.Techiteasy.dtos;
+package nl.TechItEasy.Techiteasy.dtos.inputDtos;
 
 import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import lombok.Getter;

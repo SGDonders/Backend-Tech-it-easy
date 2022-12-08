@@ -1,8 +1,8 @@
 package nl.TechItEasy.Techiteasy.controllers;
 
 import nl.TechItEasy.Techiteasy.Utils;
-import nl.TechItEasy.Techiteasy.dtos.TelevisionInputDto;
-import nl.TechItEasy.Techiteasy.dtos.TelevisionOutputDto;
+import nl.TechItEasy.Techiteasy.dtos.inputDtos.TelevisionInputDto;
+import nl.TechItEasy.Techiteasy.dtos.outputDtos.TelevisionOutputDto;
 import nl.TechItEasy.Techiteasy.models.Television;
 import nl.TechItEasy.Techiteasy.services.TelevisionService;
 import org.springframework.http.ResponseEntity;
@@ -69,9 +69,9 @@ public class TelevisionController {
 
     // PutMapping voor een televisie en link met remote-controller.
     @PutMapping("/{tvId}/remotecontrollers/{remoteId}")
-    public ResponseEntity<Object> assignRemoteControllerToTelevision(@PathVariable Integer tvId, // Verwacht een tvId.
+    public ResponseEntity<Object> assignRemoteToTelevision(@PathVariable Integer tvId, // Verwacht een tvId.
                                                                      @PathVariable Integer remoteId) { // Verwacht een RemoteId.
-        televisionService.assignRemoteControllerToTelevision(tvId, remoteId); // Gebruikt de assign functie to Television
+        televisionService.assignRemoteToTelevision(tvId, remoteId); // Gebruikt de assign functie to Television
         return ResponseEntity.ok().body("RemoteController linked to television!");
     }
 

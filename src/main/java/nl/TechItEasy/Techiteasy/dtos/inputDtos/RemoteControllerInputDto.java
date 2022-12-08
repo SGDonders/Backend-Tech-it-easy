@@ -1,4 +1,4 @@
-package nl.TechItEasy.Techiteasy.dtos;
+package nl.TechItEasy.Techiteasy.dtos.inputDtos;
 
 import lombok.Getter;
 import lombok.Setter;

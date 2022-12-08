@@ -1,7 +1,7 @@
 package nl.TechItEasy.Techiteasy.services;
 
-import nl.TechItEasy.Techiteasy.dtos.TelevisionOutputDto;
-import nl.TechItEasy.Techiteasy.dtos.TelevisionInputDto;
+import nl.TechItEasy.Techiteasy.dtos.outputDtos.TelevisionOutputDto;
+import nl.TechItEasy.Techiteasy.dtos.inputDtos.TelevisionInputDto;
 import nl.TechItEasy.Techiteasy.exceptions.RecordNotFoundException;
 import nl.TechItEasy.Techiteasy.models.RemoteController;
 import nl.TechItEasy.Techiteasy.models.Television;
@@ -192,25 +192,21 @@ public class TelevisionService {
     }
 
 
-    // Functie om de remote-controller te linken met een televisie
-    public void assignRemoteControllerToTelevision(Integer tvId, Integer remoteId) { // Functie ontvangt tvId en remoteId
-                                                                                     // via client zijde.
+        // Functie om de remote-controller te linken met een televisie.
+        public void assignRemoteToTelevision(int tvId, int remoteId) {
+        Television television = televisionRepository.findById(tvId)
+                .orElseThrow(() -> new RecordNotFoundException("Tv not found!")); //
 
-        Optional<Television> optionalTelevision = televisionRepository.findById(tvId); // Haalt optional tv uit database
-        Optional<RemoteController> optionalRemoteControl = remoteControllerRepository.findById(remoteId); // Haal optional
-                                                                                                          // remote uit database.
-        if (optionalTelevision.isPresent() && optionalRemoteControl.isPresent()) { // Checkt of beide aanwezig zijn.
-            Television television = optionalTelevision.get(); // Indien aanwezig pakt de optional tv en maakt er een tv van.
-            RemoteController remoteControl = optionalRemoteControl.get(); // Indien aanwezig pakt de optional remote en maakt
-                                                                          // er een remote-controller van .
-            television.setRemoteController(remoteControl); // Voegt de remote-controller toe aan de televisie.
-            televisionRepository.save(television); // Slaat de televisie op in de database.
-        } else {
-            throw new RecordNotFoundException("No television/remote-controller combination found");
-            // Indien niet aanwezig gooit een exception.
+        RemoteController remoteController = remoteControllerRepository.findById(remoteId)
+                .orElseThrow(() -> new RecordNotFoundException("RemoteController not found!"));
+
+        television.setRemoteController(remoteController);
+            televisionRepository.save(television);
         }
-    }
 }
+
+
+
 
 
 

@@ -1,10 +1,8 @@
 package nl.TechItEasy.Techiteasy.controllers;
 
 import nl.TechItEasy.Techiteasy.Utils;
-import nl.TechItEasy.Techiteasy.dtos.CiModuleInputDto;
-import nl.TechItEasy.Techiteasy.dtos.CiModuleOutputDto;
-import nl.TechItEasy.Techiteasy.dtos.RemoteControllerInputDto;
-import nl.TechItEasy.Techiteasy.dtos.RemoteControllerOutputDto;
+import nl.TechItEasy.Techiteasy.dtos.inputDtos.CiModuleInputDto;
+import nl.TechItEasy.Techiteasy.dtos.outputDtos.CiModuleOutputDto;
 import nl.TechItEasy.Techiteasy.models.CiModule;
 import nl.TechItEasy.Techiteasy.services.CiModuleService;
 import org.springframework.http.ResponseEntity;
