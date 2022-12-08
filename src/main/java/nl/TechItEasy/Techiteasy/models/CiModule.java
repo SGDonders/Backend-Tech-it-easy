@@ -1,10 +1,8 @@
 package nl.TechItEasy.Techiteasy.models;
 
 import lombok.*;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -19,9 +17,13 @@ public class CiModule {
     @Id
     @GeneratedValue
     public Integer id;
+
     public String name;
     public String type;
     public Double price;
+
+//    @ManyToOne
+//    private Television television;
 
 }
 

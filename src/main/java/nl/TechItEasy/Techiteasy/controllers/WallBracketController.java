@@ -1,6 +1,8 @@
 package nl.TechItEasy.Techiteasy.controllers;
 
 import nl.TechItEasy.Techiteasy.Utils;
+import nl.TechItEasy.Techiteasy.dtos.RemoteControllerInputDto;
+import nl.TechItEasy.Techiteasy.dtos.RemoteControllerOutputDto;
 import nl.TechItEasy.Techiteasy.dtos.WallBracketInputDto;
 import nl.TechItEasy.Techiteasy.dtos.WallBracketOutputDto;
 import nl.TechItEasy.Techiteasy.models.WallBracket;
@@ -36,14 +38,14 @@ public class WallBracketController {
         return ResponseEntity.ok(wallBracketService.getWallBracket(id));
     }
 
-    // DeleteMapping request.
+    // DeleteMapping request voor een wallBracket.
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteWallBracket(@PathVariable int id) {
         wallBracketService.deleteWallBracket(id); //
         return ResponseEntity.noContent().build();
     }
 
-    // PostMapping request.
+    // PostMapping request voor een wallBracket.
     @PostMapping("")
     public ResponseEntity<Object> createWallBracket(@Valid @RequestBody WallBracketInputDto wallBracketInputDto, BindingResult bindingResult) {
 
@@ -54,6 +56,13 @@ public class WallBracketController {
                 ().path("/WallBracket/" + savedWallBracket.getId()).toUriString());
 
         return ResponseEntity.created(uri).body(savedWallBracket);
+    }
+
+    // PutMapping request voor een wallBracket.
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateWallBracket(@PathVariable int id, @RequestBody WallBracketInputDto wallBracketInputDto) {
+        WallBracketOutputDto wallBracketOutputDto = wallBracketService.updateWallBracket(id, wallBracketInputDto);
+        return ResponseEntity.ok().body(wallBracketOutputDto);
     }
 
 }

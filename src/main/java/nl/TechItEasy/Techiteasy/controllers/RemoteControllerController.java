@@ -19,16 +19,10 @@ import java.util.List;
 public class RemoteControllerController {
 
     private final RemoteControllerService remoteControllerService;
-
     public RemoteControllerController(RemoteControllerService remoteControllerService) {
         this.remoteControllerService = remoteControllerService;
     }
 
-    // GetMapping request alle remoteControllers.
-    @GetMapping("")
-    public ResponseEntity<List<RemoteControllerOutputDto>> getAllRemoteController() {
-        return ResponseEntity.ok(remoteControllerService.getAllRemoteControllers());
-    }
 
     // GetMapping request voor één remoteController
     @GetMapping("{id}")
@@ -36,12 +30,21 @@ public class RemoteControllerController {
         return ResponseEntity.ok(remoteControllerService.getRemoteController(id));
     }
 
+
+    // GetMapping request voor alle remoteControllers.
+    @GetMapping("")
+    public ResponseEntity<List<RemoteControllerOutputDto>> getAllRemoteController() {
+        return ResponseEntity.ok(remoteControllerService.getAllRemoteControllers());
+    }
+
+
     // DeleteMapping request voor remoteController.
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteRemoteController(@PathVariable int id) {
         remoteControllerService.deleteRemoteController(id); //
         return ResponseEntity.noContent().build();
     }
+
 
     // PostMapping request voor remoteController.
     @PostMapping("")
@@ -56,4 +59,11 @@ public class RemoteControllerController {
         return ResponseEntity.created(uri).body(savedRemoteControllerController);
     }
 
+
+    // PutMapping request voor een remote-controller.
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateRemoteController(@PathVariable int id, @RequestBody RemoteControllerInputDto remoteControllerInputDto) {
+        RemoteControllerOutputDto remoteControllerOutputDto = remoteControllerService.updateRemoteController(id, remoteControllerInputDto);
+        return ResponseEntity.ok().body(remoteControllerOutputDto);
+    }
 }

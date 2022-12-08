@@ -1,10 +1,9 @@
 package nl.TechItEasy.Techiteasy.services;
 
-import nl.TechItEasy.Techiteasy.dtos.TelevisionInputDto;
+
 import nl.TechItEasy.Techiteasy.dtos.WallBracketInputDto;
 import nl.TechItEasy.Techiteasy.dtos.WallBracketOutputDto;
 import nl.TechItEasy.Techiteasy.exceptions.RecordNotFoundException;
-import nl.TechItEasy.Techiteasy.models.Television;
 import nl.TechItEasy.Techiteasy.models.WallBracket;
 import nl.TechItEasy.Techiteasy.repositories.WallBracketRepository;
 import org.springframework.stereotype.Service;
@@ -17,12 +16,12 @@ import java.util.Optional;
 public class WallBracketService {
 
     private final WallBracketRepository wallBracketRepository;
-
     public WallBracketService(WallBracketRepository wallBracketRepository) {
         this.wallBracketRepository = wallBracketRepository;
     }
 
 
+    // Wrapper functie.
     public WallBracket transferInputDtoToWallBracket(WallBracketInputDto wallBracketInputDto) {
 
         WallBracket newWallBracket = new WallBracket();
@@ -35,6 +34,8 @@ public class WallBracketService {
         return wallBracketRepository.save(newWallBracket);
     }
 
+
+    // Wrapper functie.
     public WallBracketOutputDto transferWallBracketToOutputDto(WallBracket wallBracket) {
 
         WallBracketOutputDto wallBracketOutputDto = new WallBracketOutputDto();
@@ -48,9 +49,10 @@ public class WallBracketService {
     }
 
 
-    // Functie voor GetMapping één wallBracket.
+    // Functie voor GetMapping.
     public WallBracketOutputDto getWallBracket(int id) {
         Optional<WallBracket> requestedWallBracket = wallBracketRepository.findById(id);
+
         if (requestedWallBracket.isEmpty()) {
             throw new RecordNotFoundException("Record not found!");
         } else {
@@ -58,10 +60,10 @@ public class WallBracketService {
         }
     }
 
-    // Functie voor GetMapping van alle wallBrackets.
+
+    // Functie voor GetMapping.
     public List<WallBracketOutputDto> getAllWallBrackets() {
         List<WallBracket> optionalWallBracket = wallBracketRepository.findAll();
-
         List<WallBracketOutputDto> wallBracketOutputDtoList = new ArrayList<>();
 
         if (optionalWallBracket.isEmpty()) {
@@ -69,32 +71,58 @@ public class WallBracketService {
         } else {
             for (WallBracket wallBracket : optionalWallBracket) {
                 WallBracketOutputDto wallBracketOutputDto = transferWallBracketToOutputDto(wallBracket);
-
                 wallBracketOutputDtoList.add(wallBracketOutputDto);
             }
         }
         return wallBracketOutputDtoList;
     }
 
-    //Functie voor deleteMapping WallBracket
+
+    //Functie voor deleteMapping.
     public void deleteWallBracket(int id) {
         Optional<WallBracket> optionalWallBracket = wallBracketRepository.findById(id);
-        // optional tv.
+
         if (optionalWallBracket.isEmpty()) {
             throw new RecordNotFoundException("Television already removed or doesn't exist!");
-            // throw exception.
         } else {
             WallBracket wallBracketObj = optionalWallBracket.get();
-            // er een tv van.
             wallBracketRepository.delete(wallBracketObj);
         }
     }
 
-    // Functie voor PostMapping televisie
+
+    // Functie voor PostMapping.
     public WallBracket createWallBracket(WallBracketInputDto wallBracketInputDto) {
         WallBracket newWallBracket = transferInputDtoToWallBracket(wallBracketInputDto);
-
         return wallBracketRepository.save(newWallBracket);
+    }
+
+
+    // Functie voor PutMapping.
+    public WallBracketOutputDto updateWallBracket(int id, WallBracketInputDto wallBracketInputDto) {
+        Optional<WallBracket> optionalWallBracket = wallBracketRepository.findById(id);
+
+        if (optionalWallBracket.isPresent()) {
+
+            WallBracket wallBracketUpdate = optionalWallBracket.get();
+
+            if (wallBracketInputDto.getSize() != null) {
+                wallBracketUpdate.setSize(wallBracketInputDto.getSize());
+            }
+            if (wallBracketInputDto.getName() != null) {
+                wallBracketUpdate.setName(wallBracketInputDto.getName());
+            }
+            if (wallBracketInputDto.getPrice() != 0) {
+                wallBracketUpdate.setPrice(wallBracketInputDto.getPrice());
+            }
+            wallBracketUpdate.setAdjustable(wallBracketInputDto.getAdjustable());
+
+            WallBracket updatedWallBracket = wallBracketRepository.save(wallBracketUpdate);
+            return transferWallBracketToOutputDto(updatedWallBracket);
+        } else {
+            throw new RecordNotFoundException("WallBracket not found!");
+
+        }
     }
 }
 

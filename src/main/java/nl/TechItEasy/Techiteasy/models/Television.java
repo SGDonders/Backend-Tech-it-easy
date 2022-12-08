@@ -1,7 +1,9 @@
 package nl.TechItEasy.Techiteasy.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
+import java.util.List;
 
 // Lombok annotaties.
 @Setter
@@ -41,6 +43,10 @@ public class Television {
     // waarbij de televisie de eigenaar is.
     @OneToOne
     private RemoteController remoteController;
+
+//    @OneToMany(mappedBy = "television")
+//    @JsonIgnore
+//    private List<CiModule> ciModuleList;
 
 }
 

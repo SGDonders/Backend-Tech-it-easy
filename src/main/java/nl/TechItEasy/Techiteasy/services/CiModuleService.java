@@ -3,11 +3,12 @@ package nl.TechItEasy.Techiteasy.services;
 
 import nl.TechItEasy.Techiteasy.dtos.CiModuleInputDto;
 import nl.TechItEasy.Techiteasy.dtos.CiModuleOutputDto;
-import nl.TechItEasy.Techiteasy.dtos.TelevisionInputDto;
-import nl.TechItEasy.Techiteasy.dtos.TelevisionOutputDto;
+
+import nl.TechItEasy.Techiteasy.dtos.RemoteControllerInputDto;
+import nl.TechItEasy.Techiteasy.dtos.RemoteControllerOutputDto;
 import nl.TechItEasy.Techiteasy.exceptions.RecordNotFoundException;
 import nl.TechItEasy.Techiteasy.models.CiModule;
-import nl.TechItEasy.Techiteasy.models.Television;
+import nl.TechItEasy.Techiteasy.models.RemoteController;
 import nl.TechItEasy.Techiteasy.repositories.CiModuleRepository;
 import org.springframework.stereotype.Service;
 
@@ -95,5 +96,32 @@ public class CiModuleService {
     public CiModule createCiModule(CiModuleInputDto ciModuleInputDto) {
         CiModule newCiModule = transferInputDtoToCiModule(ciModuleInputDto);
         return ciModuleRepository.save(newCiModule);
+    }
+
+
+    // Functie voor PutMapping.
+    public CiModuleOutputDto updateCiModule(int id, CiModuleInputDto ciModuleInputDto) {
+
+        Optional<CiModule> optionalCiModule = ciModuleRepository.findById(id);
+
+        if (optionalCiModule.isPresent()) {
+
+            CiModule ciModuleUpdate = optionalCiModule.get();
+
+            if (ciModuleInputDto.getName() != null) {
+                ciModuleUpdate.setName(ciModuleInputDto.getName());
+            }
+            if (ciModuleInputDto.getType() != null) {
+                ciModuleUpdate.setType(ciModuleInputDto.getType());
+            }
+            if (ciModuleInputDto.getPrice() != null) {
+                ciModuleUpdate.setPrice(ciModuleInputDto.getPrice());
+            }
+            CiModule updatedCiModule = ciModuleRepository.save(ciModuleUpdate);
+            return transferCiModuleToOutputDto(updatedCiModule);
+        } else {
+            throw new RecordNotFoundException("CiModule not found!");
+
+        }
     }
 }

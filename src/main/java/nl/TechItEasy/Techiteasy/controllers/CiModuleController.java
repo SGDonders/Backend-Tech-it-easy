@@ -3,6 +3,8 @@ package nl.TechItEasy.Techiteasy.controllers;
 import nl.TechItEasy.Techiteasy.Utils;
 import nl.TechItEasy.Techiteasy.dtos.CiModuleInputDto;
 import nl.TechItEasy.Techiteasy.dtos.CiModuleOutputDto;
+import nl.TechItEasy.Techiteasy.dtos.RemoteControllerInputDto;
+import nl.TechItEasy.Techiteasy.dtos.RemoteControllerOutputDto;
 import nl.TechItEasy.Techiteasy.models.CiModule;
 import nl.TechItEasy.Techiteasy.services.CiModuleService;
 import org.springframework.http.ResponseEntity;
@@ -19,10 +21,10 @@ import java.util.List;
 public class CiModuleController {
 
     private final CiModuleService ciModuleService;
-
     public CiModuleController(CiModuleService ciModuleService) {
         this.ciModuleService = ciModuleService;
     }
+
 
     // GetMapping request alle CiModules.
     @GetMapping("")
@@ -30,11 +32,13 @@ public class CiModuleController {
         return ResponseEntity.ok(ciModuleService.getAllCiModules());
     }
 
+
     // GetMapping request voor één CiModule.
     @GetMapping("{id}")
     public ResponseEntity<CiModuleOutputDto> getCiModule(@PathVariable int id) {
         return ResponseEntity.ok(ciModuleService.getCiModule(id));
     }
+
 
     // DeleteMapping request voor een CiModule.
     @DeleteMapping("{id}")
@@ -43,11 +47,11 @@ public class CiModuleController {
         return ResponseEntity.noContent().build();
     }
 
+
     // PostMapping request voor een CiModule.
     @PostMapping("")
     public ResponseEntity<Object> createCiModule(@Valid @RequestBody CiModuleInputDto ciModuleInputDto,
                                                  BindingResult bindingResult) {
-
         Utils.reportErrors(bindingResult);
 
         CiModule savedCiModule = ciModuleService.createCiModule(ciModuleInputDto);
@@ -55,6 +59,14 @@ public class CiModuleController {
                 ().path("/CiModule/" + savedCiModule.getId()).toUriString());
 
         return ResponseEntity.created(uri).body(savedCiModule);
+    }
+
+
+    // PutMapping voor een CiModule.
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateCiModule(@PathVariable int id, @RequestBody CiModuleInputDto ciModuleInputDto) {
+        CiModuleOutputDto ciModuleOutputDto = ciModuleService.updateCiModule(id, ciModuleInputDto);
+        return ResponseEntity.ok().body(ciModuleOutputDto);
     }
 }
 
