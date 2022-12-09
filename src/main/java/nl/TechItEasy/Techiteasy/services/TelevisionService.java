@@ -193,15 +193,19 @@ public class TelevisionService {
 
 
         // Functie om de remote-controller te linken met een televisie.
-        public void assignRemoteToTelevision(int tvId, int remoteId) {
-        Television television = televisionRepository.findById(tvId)
-                .orElseThrow(() -> new RecordNotFoundException("Tv not found!")); //
+        public void assignRemoteToTelevision(int tvId, int remoteId) { // Functie verwachte een tvId en remoteId
+        Television television = televisionRepository.findById(tvId) // Haalt televisie op uit de database en slaat het op
+                                                                    // als een televisie.
+                .orElseThrow(() -> new RecordNotFoundException("Tv not found!")); // Indien niet gevonden gooit een exception.
 
-        RemoteController remoteController = remoteControllerRepository.findById(remoteId)
-                .orElseThrow(() -> new RecordNotFoundException("RemoteController not found!"));
+        RemoteController remoteController = remoteControllerRepository.findById(remoteId) // Haalt remote-controller uit
+                                                                                          // de database en slaat het op
+                                                                                          // als een remote-controller/
+                .orElseThrow(() -> new RecordNotFoundException("RemoteController not found!")); // Indien niet gevonden
+                                                                                                // gooit een exception.
 
-        television.setRemoteController(remoteController);
-            televisionRepository.save(television);
+        television.setRemoteController(remoteController); // Linked de remote-controller aan de televisie.
+            televisionRepository.save(television); // Slaat de televisie op in de database.
         }
 }
 
