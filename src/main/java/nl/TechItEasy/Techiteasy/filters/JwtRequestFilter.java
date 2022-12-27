@@ -1,4 +1,4 @@
-package nl.TechItEasy.Techiteasy.filter;
+package nl.TechItEasy.Techiteasy.filters;
 
 import nl.TechItEasy.Techiteasy.services.CustomUserDetailsService;
 import nl.TechItEasy.Techiteasy.utils.JwtUtil;

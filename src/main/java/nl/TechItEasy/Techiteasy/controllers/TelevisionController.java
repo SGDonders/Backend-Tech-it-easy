@@ -1,16 +1,17 @@
 package nl.TechItEasy.Techiteasy.controllers;
 
-import nl.TechItEasy.Techiteasy.utils.Utils;
 import nl.TechItEasy.Techiteasy.dtos.inputDtos.TelevisionInputDto;
 import nl.TechItEasy.Techiteasy.dtos.outputDtos.TelevisionOutputDto;
 import nl.TechItEasy.Techiteasy.models.Television;
 import nl.TechItEasy.Techiteasy.services.TelevisionService;
+import nl.TechItEasy.Techiteasy.utils.Utils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
+import javax.xml.bind.ValidationException;
 import java.net.URI;
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class TelevisionController {
 
     // PostMapping request van een televisie.
     @PostMapping("")                            // @Valid Annotation indien condities ingesteld bij Dto's
-    public ResponseEntity<Object> createTelevision(@Valid @RequestBody TelevisionInputDto televisionInputDto, BindingResult bindingResult) { // Verwacht een
+    public ResponseEntity<Object> createTelevision(@Valid @RequestBody TelevisionInputDto televisionInputDto, BindingResult bindingResult) throws ValidationException { // Verwacht een
 
         Utils.reportErrors(bindingResult);
 

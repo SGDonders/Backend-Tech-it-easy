@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
+import javax.xml.bind.ValidationException;
 import java.net.URI;
 import java.util.List;
 
@@ -49,7 +50,7 @@ public class CiModuleController {
     // PostMapping request voor een CiModule.
     @PostMapping("")
     public ResponseEntity<Object> createCiModule(@Valid @RequestBody CiModuleInputDto ciModuleInputDto,
-                                                 BindingResult bindingResult) {
+                                                 BindingResult bindingResult) throws ValidationException {
         Utils.reportErrors(bindingResult);
 
         CiModule savedCiModule = ciModuleService.createCiModule(ciModuleInputDto);
