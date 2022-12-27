@@ -1,6 +1,6 @@
 package nl.TechItEasy.Techiteasy.controllers;
 
-import nl.TechItEasy.Techiteasy.Utils;
+import nl.TechItEasy.Techiteasy.utils.Utils;
 import nl.TechItEasy.Techiteasy.dtos.inputDtos.CiModuleInputDto;
 import nl.TechItEasy.Techiteasy.dtos.outputDtos.CiModuleOutputDto;
 import nl.TechItEasy.Techiteasy.models.CiModule;

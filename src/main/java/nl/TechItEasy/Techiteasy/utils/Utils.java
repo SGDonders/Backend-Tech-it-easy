@@ -1,12 +1,12 @@
-package nl.TechItEasy.Techiteasy;
+package nl.TechItEasy.Techiteasy.utils;
 
 
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import javax.validation.ValidationException;
+import javax.xml.bind.ValidationException;
 
 public class Utils {
-    public static void reportErrors(BindingResult br) {
+    public static void reportErrors(BindingResult br) throws ValidationException {
         if (br.hasErrors()) {
             StringBuilder sb = new StringBuilder();
             for (FieldError fe : br.getFieldErrors()) {
