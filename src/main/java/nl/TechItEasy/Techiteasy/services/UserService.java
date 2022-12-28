@@ -6,6 +6,7 @@ import nl.TechItEasy.Techiteasy.exceptions.UsernameNotFoundException;
 import nl.TechItEasy.Techiteasy.models.Authority;
 import nl.TechItEasy.Techiteasy.models.User;
 import nl.TechItEasy.Techiteasy.repositories.UserRepository;
+import nl.TechItEasy.Techiteasy.utils.RandomStringGenerator;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
