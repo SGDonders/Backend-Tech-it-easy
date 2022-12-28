@@ -1,6 +1,6 @@
 package nl.TechItEasy.Techiteasy.controllers;
 
-import nl.TechItEasy.Techiteasy.Utils;
+import nl.TechItEasy.Techiteasy.utils.Utils;
 import nl.TechItEasy.Techiteasy.dtos.inputDtos.RemoteControllerInputDto;
 import nl.TechItEasy.Techiteasy.dtos.outputDtos.RemoteControllerOutputDto;
 import nl.TechItEasy.Techiteasy.models.RemoteController;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
+import javax.xml.bind.ValidationException;
 import java.net.URI;
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class RemoteControllerController {
 
     // PostMapping request voor remoteController.
     @PostMapping("")
-    public ResponseEntity<Object> createRemoteController(@Valid @RequestBody RemoteControllerInputDto remoteControllerInputDto, BindingResult bindingResult) {
+    public ResponseEntity<Object> createRemoteController(@Valid @RequestBody RemoteControllerInputDto remoteControllerInputDto, BindingResult bindingResult) throws ValidationException {
 
         Utils.reportErrors(bindingResult);
 

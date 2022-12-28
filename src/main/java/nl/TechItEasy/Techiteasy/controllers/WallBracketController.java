@@ -1,6 +1,6 @@
 package nl.TechItEasy.Techiteasy.controllers;
 
-import nl.TechItEasy.Techiteasy.Utils;
+import nl.TechItEasy.Techiteasy.utils.Utils;
 import nl.TechItEasy.Techiteasy.dtos.inputDtos.WallBracketInputDto;
 import nl.TechItEasy.Techiteasy.dtos.outputDtos.WallBracketOutputDto;
 import nl.TechItEasy.Techiteasy.models.WallBracket;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
+import javax.xml.bind.ValidationException;
 import java.net.URI;
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class WallBracketController {
 
     // PostMapping request voor een wallBracket.
     @PostMapping("")
-    public ResponseEntity<Object> createWallBracket(@Valid @RequestBody WallBracketInputDto wallBracketInputDto, BindingResult bindingResult) {
+    public ResponseEntity<Object> createWallBracket(@Valid @RequestBody WallBracketInputDto wallBracketInputDto, BindingResult bindingResult) throws ValidationException {
 
         Utils.reportErrors(bindingResult);
 
