@@ -1,6 +1,6 @@
 package nl.TechItEasy.Techiteasy.controllers;
 
-import nl.TechItEasy.Techiteasy.dtos.combDto.UserDto;
+import nl.TechItEasy.Techiteasy.dtos.securityDto.UserDto;
 import nl.TechItEasy.Techiteasy.exceptions.BadRequestException;
 import nl.TechItEasy.Techiteasy.services.UserService;
 import org.springframework.http.ResponseEntity;

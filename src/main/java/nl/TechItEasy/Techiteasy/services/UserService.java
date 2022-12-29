@@ -1,13 +1,15 @@
 package nl.TechItEasy.Techiteasy.services;
 
-import nl.TechItEasy.Techiteasy.dtos.combDto.UserDto;
+import nl.TechItEasy.Techiteasy.dtos.securityDto.UserDto;
 import nl.TechItEasy.Techiteasy.exceptions.RecordNotFoundException;
 import nl.TechItEasy.Techiteasy.exceptions.UsernameNotFoundException;
 import nl.TechItEasy.Techiteasy.models.Authority;
 import nl.TechItEasy.Techiteasy.models.User;
 import nl.TechItEasy.Techiteasy.repositories.UserRepository;
 import nl.TechItEasy.Techiteasy.utils.RandomStringGenerator;
+
 import org.springframework.stereotype.Service;
+
 
 import java.util.ArrayList;
 import java.util.List;
