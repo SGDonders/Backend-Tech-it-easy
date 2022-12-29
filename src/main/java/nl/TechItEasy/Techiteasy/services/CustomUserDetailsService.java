@@ -1,6 +1,6 @@
 package nl.TechItEasy.Techiteasy.services;
 
-import nl.TechItEasy.Techiteasy.dtos.combDto.UserDto;
+import nl.TechItEasy.Techiteasy.dtos.securityDto.UserDto;
 import nl.TechItEasy.Techiteasy.models.Authority;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

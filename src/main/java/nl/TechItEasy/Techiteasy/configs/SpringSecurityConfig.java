@@ -63,16 +63,21 @@ public class SpringSecurityConfig {
                 .antMatchers(HttpMethod.GET,"/users").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST,"/users/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
+
                 .antMatchers(HttpMethod.POST, "/cimodules").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/cimodules/**").hasRole("ADMIN")
+
                 .antMatchers(HttpMethod.POST, "/remotecontrollers").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/remotecontrollers/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST, "/televisions").hasRole("ADMIN")
+
+                .antMatchers(HttpMethod.POST, "/televisions").hasAnyRole("ADMIN", "USERS")
                 .antMatchers(HttpMethod.DELETE, "/televisions/**").hasRole("ADMIN")
+
                 .antMatchers(HttpMethod.POST, "/wallbrackets").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/wallbrackets/**").hasRole("ADMIN")
                 // Je mag meerdere paths tegelijk definieren
                 .antMatchers("/cimodules", "/remotecontrollers", "/televisions", "/wallbrackets").hasAnyRole("ADMIN", "USER")
+
                 .antMatchers("/authenticated").authenticated()
                 .antMatchers("/authenticate").permitAll()
                 .and()

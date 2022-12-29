@@ -1,4 +1,4 @@
-package nl.TechItEasy.Techiteasy.dtos.combDto;
+package nl.TechItEasy.Techiteasy.dtos.securityDto;
 
 import nl.TechItEasy.Techiteasy.models.Authority;
 
@@ -48,10 +48,7 @@ public class UserDto {
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
-
-    public void setApikey(String apikey) {
-        this.apikey = apikey;
-    }
+    public void setApikey(String apikey) { this.apikey = apikey; }
 
     public void setEmail(String email) {
         this.email = email;
